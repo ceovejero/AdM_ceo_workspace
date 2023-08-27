@@ -7,11 +7,17 @@
 1. Describa brevemente los diferentes perfiles de familias de microprocesadores/microcontroladores de ARM. Explique alguna de sus diferencias características.
 
 Los perfiles se definen de la siguiente manera:
+
 `ARMv7-A`
+
 **Application:** este perfil es para sistemas que admiten los sets de instrucciones ARM y Thumb y que requieren soporte de direcciones virtuales en el modelo de gestión de memoria.
+
 `ARMv7-R`
+
 **Realtime:** este perfil es para sistemas que admiten los sets de instrucciones ARM y Thumb y que requieren dirección física, sólo soportado en el modelo de gestión de memoria.
+
 `ARMv7-M`
+
 **Microcontroller:** este perfil es para sistemas que sólo admiten sets  de instrucciones Thumb y donde el tamaño general y la operación determinista para una implementación son más importantes que la performance absoluta.
 
 
