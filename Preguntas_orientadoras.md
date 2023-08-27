@@ -1,6 +1,6 @@
 # Arquitectura de Microprocesadores 
-# Carrera de Especialización en Sistemas Embebidos 
-# Universidad de Buenos Aires 
+
+# Carrera de Especialización en Sistemas Embebidos - Universidad de Buenos Aires 
 
 ## Preguntas orientadoras 
 
