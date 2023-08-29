@@ -10,7 +10,7 @@ Los perfiles se definen de la siguiente manera:
 
 `ARMv7-A`
 
-`**Application:**` Son procesadores de **alto rendimiento** y están orientados a sistemas operativos embebidos de alta performance y **alto nivel de paralelismo**.
+`Application:` Son procesadores de **alto rendimiento** y están orientados a sistemas operativos embebidos de alta performance y **alto nivel de paralelismo**.
 
 - Varios núcleos (alta frecuencia)
 - “Mucha” memoria RAM
@@ -18,12 +18,12 @@ Los perfiles se definen de la siguiente manera:
 
 `ARMv7-R`
 
-`**Realtime:**` Son procesadores orientados a sistemas de tiempo real donde es necesario implementar soluciones de **baja latencia**, **alta predictibilidad** y **alta capacidad de cómputo**. Suelen utilizarse en **sistemas críticos**. Ejemplo: sistemas del automóvil
+`Realtime:` Son procesadores orientados a sistemas de tiempo real donde es necesario implementar soluciones de **baja latencia**, **alta predictibilidad** y **alta capacidad de cómputo**. Suelen utilizarse en **sistemas críticos**. Ejemplo: sistemas del automóvil
 (control de tracción, frenos, etc.); dispositivos críticos: médicos, industriales, etc
 
 `ARMv7-M`
 
-`**Microcontroller:**` Son procesadores orientados a dispositivos de **consumo masivo** y sistemas **embebidos compactos**. Están diseñados para alta densidad de código y ser programados en C.
+`Microcontroller:` Son procesadores orientados a dispositivos de **consumo masivo** y sistemas **embebidos compactos**. Están diseñados para alta densidad de código y ser programados en C.
 
 
 ## Cortex M
