@@ -10,20 +10,30 @@ Los perfiles se definen de la siguiente manera:
 
 `ARMv7-A`
 
-**Application:** este perfil es para sistemas que admiten los sets de instrucciones ARM y Thumb y que requieren soporte de direcciones virtuales en el modelo de gestión de memoria.
+**Application:** Son procesadores de **alto rendimiento** y están orientados a sistemas operativos embebidos de alta performance y **alto nivel de paralelismo**.
+
+- Varios núcleos (alta frecuencia)
+- “Mucha” memoria RAM
+- Memoria caché…
 
 `ARMv7-R`
 
-**Realtime:** este perfil es para sistemas que admiten los sets de instrucciones ARM y Thumb y que requieren dirección física, sólo soportado en el modelo de gestión de memoria.
+**Realtime:** Son procesadores orientados a sistemas de tiempo real donde es necesario implementar soluciones de **baja latencia**, **alta predictibilidad** y **alta capacidad de cómputo**. Suelen utilizarse en **sistemas críticos**. Ejemplo: sistemas del automóvil
+(control de tracción, frenos, etc.); dispositivos críticos: médicos, industriales, etc
 
 `ARMv7-M`
 
-**Microcontroller:** este perfil es para sistemas que sólo admiten sets  de instrucciones Thumb y donde el tamaño general y la operación determinista para una implementación son más importantes que la performance absoluta.
+**Microcontroller:** Son procesadores orientados a dispositivos de **consumo masivo** y sistemas **embebidos compactos**. Están diseñados para alta densidad de código y ser programados en C.
 
 
 ## Cortex M
 
 1.	Describa brevemente las diferencias entre las familias de procesadores Cortex M0, M3 y M4. 
+
+`Cortex M0/M0+:` Pensados para una implementación mínima, de bajo consumo y bajo costo.
+
+`Cortex M3/M4/M7:` Agregan mayor performance, más funcionalidades (división por hardware), FPU, MPU, etc.
+
 2.	¿Por qué se dice que el set de instrucciones Thumb permite mayor densidad de código? Explique 
 3.	¿Qué entiende por arquitectura load-store? ¿Qué tipo de instrucciones no posee este tipo de arquitectura? 
 4.	¿Cómo es el mapa de memoria de la familia?  
