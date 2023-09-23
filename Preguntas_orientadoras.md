@@ -36,13 +36,13 @@ Los perfiles se definen de la siguiente manera:
 
 ## Cortex M
 
-1.	Describa brevemente las diferencias entre las familias de procesadores Cortex M0, M3 y M4. 
+> `1.	Describa brevemente las diferencias entre las familias de procesadores Cortex M0, M3 y M4. `
 
 - `Cortex M0/M0+:` Pensados para una implementación mínima, de bajo consumo y bajo costo.
 
 - `Cortex M3/M4/M7:` Agregan mayor performance, más funcionalidades (división por hardware), FPU, MPU, etc.
 
-2.	¿Por qué se dice que el set de instrucciones Thumb permite mayor densidad de código? Explique.
+> `2.	¿Por qué se dice que el set de instrucciones Thumb permite mayor densidad de código? Explique. `
 
 ARM incorporó un novedoso mecanismo llamado arquitectura “Thumb”. 
 El set de instrucciones Thumb es una forma comprimida a 16 bits del set de instrucciones ARM de 32 bits original y emplea hardware dedescompresión dinámica en la instrucción pipeline, para descomprimir las instrucciones de 16 a 32 bits.
