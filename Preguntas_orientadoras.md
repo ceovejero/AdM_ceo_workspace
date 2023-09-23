@@ -6,6 +6,13 @@
 
 $${\color{Green}1. Describa brevemente los diferentes perfiles de familias de microprocesadores/microcontroladores de ARM. Explique alguna de sus diferencias características.}$$
 
+```html
+<span style="color:red">cardenales</span>.
+```
+
+
+
+
 Los perfiles se definen de la siguiente manera:
 
 `ARMv7-A`
