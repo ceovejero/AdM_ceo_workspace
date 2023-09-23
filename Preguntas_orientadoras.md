@@ -4,7 +4,7 @@
 
 ## Preguntas orientadoras 
 
-1. Describa brevemente los diferentes perfiles de familias de microprocesadores/microcontroladores de ARM. Explique alguna de sus diferencias características.
+<span style="color:orange">1. Describa brevemente los diferentes perfiles de familias de microprocesadores/microcontroladores de ARM. Explique alguna de sus diferencias características.</span>
 
 Los perfiles se definen de la siguiente manera:
 
