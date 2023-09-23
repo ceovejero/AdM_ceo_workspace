@@ -62,10 +62,7 @@ static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
 /* USER CODE BEGIN PFP */
 
-//####################################################################
-static void PrivilegiosSVC(void);
 
-//####################################################################
 
 /* USER CODE END PFP */
 
@@ -105,7 +102,15 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
+  //#############################################
 
+  //PrivilegiosSVC();
+
+
+
+
+
+  //#############################################
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -293,15 +298,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-//####################################################################
 
-static void PrivilegiosSVC(void)
-{
-
-
-}
-
-//######################################################################
 
 /* USER CODE END 4 */
 

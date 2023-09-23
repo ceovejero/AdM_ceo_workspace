@@ -6,7 +6,7 @@
 .global asm_svc
 .global asm_sum
 .global asm_zeros
-
+.global asm_productoEscalar32
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @ Prototipo en "C":
@@ -14,7 +14,7 @@
 @
 .thumb_func
     asm_svc:
-        svc 0
+        svc 0		//supervisor call
         bx lr
 
 
@@ -81,10 +81,102 @@
 		@ push {lr} ... pop {pc}
 
 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ Prototipo en "C":
+@   void asm_producto_escalar32(uint32_t* vector_in, uint32_t* vector_out, uint32_t longitud, uint32_t escalar);
+@
+@ Parametros recibidos:
+@   r0: vector_in
+@   r1: vector_out
+@   r2: longitud
+@   r3: escalar
+@
+.thumb_func
+    asm_producto_escalar32:
+        // Guardas de seguridad. Tener mas en cuenta para divisiones por 0
+        // cbz r0, exit_producto_escalar32
+        // cbz r1, exit_producto_escalar32
+        // cbz r2, exit_producto_escalar32
+        // cbz r3, exit_producto_escalar32
+
+        push {r4}
+
+        loop_producto_escalar32:
+            subs r2, #1 // Decremento en uno el "contador"
+
+            ldr r4, [r0, r2, LSL #2] // Guardo en r4 (auxiliar) *(r0 + (r2<<2)) = r4
+
+            //mul Rd, Rn, Rm -> Rd = Rn*Rm
+            mul r4, r4, r3 // r4 = r4*r3 (r3 ganancia)
+            str r4, [r1, r2, LSL #2] // *(r1 + (r2<<2)) = r4 (equivalente a decir que escribo el producto por un escalar en el vector de salida)
+
+            bne loop_producto_escalar32
 
 
+        pop {r4}
+        exit_producto_escalar32:
+            bx lr       @ vuelve adonde fue llamada (especificamente, si "pc"
+                        @ es la direccion, en el codigo del programa, de la
+                        @ instruccion "bl asm_sum" usada para saltar a
+                        @ esta funcion, entonces "lr" contiene ese "pc" + 4).
+                        @ el valor de retorno debe quedar en el registro r0.
+                        @ En este caso, r0 es el resultado de r0 + r1.
+
+        @ Otras alternativas para el retorno
+        @ mov pc,lr
+        @ bx lr
+        @ push {lr} ... pop {pc}
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ Prototipo en "C":
+@   void asm_producto_escalar32(uint32_t* vector_in, uint32_t* vector_out, uint32_t longitud, uint32_t escalar);void asm_productoEscalar16 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar);
+@
+@ Parametros recibidos:
+@   r0: vector_in
+@   r1: vector_out
+@   r2: longitud
+@   r3: escalar
+@
+.thumb_func
+    asm_producto_escalar16:
+        // Guardas de seguridad. Tener mas en cuenta para divisiones por 0
+        // cbz r0, exit_producto_escalar32
+        // cbz r1, exit_producto_escalar32
+        // cbz r2, exit_producto_escalar32
+        // cbz r3, exit_producto_escalar32
+
+        push {r4}
+
+        loop_producto_escalar16:
+            subs r2, #1 // Decremento en uno el "contador"
+
+            ldrh r4, [r0, r2, LSL #1] // Guardo en r4 (auxiliar) *(r0 + (r2<<1)) = r4
+
+            //mul Rd, Rn, Rm -> Rd = Rn*Rm
+            mul r4, r4, r3 // r4 = r4*r3 (r3 ganancia)
+            strh r4, [r1, r2, LSL #1] // *(r1 + (r2<<1)) = r4 (equivalente a decir que escribo el producto por un escalar en el vector de salida)
+
+            bne loop_producto_escalar16
+
+
+        pop {r4}
+        exit_producto_escalar16:
+            bx lr       @ vuelve adonde fue llamada (especificamente, si "pc"
+                        @ es la direccion, en el codigo del programa, de la
+                        @ instruccion "bl asm_sum" usada para saltar a
+                        @ esta funcion, entonces "lr" contiene ese "pc" + 4).
+                        @ el valor de retorno debe quedar en el registro r0.
+                        @ En este caso, r0 es el resultado de r0 + r1.
+
+        @ Otras alternativas para el retorno
+        @ mov pc,lr
+        @ bx lr
+        @ push {lr} ... pop {pc}
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
 

@@ -14,11 +14,11 @@
 
 
 
-// (1) función que inicialice un vector con ceros
+// (1) función que inicializa un vector con ceros
 void zeros (uint32_t * vector, uint32_t longitud);
 
 
-// (2) función que realice el producto de un vector y un escalar (cambiar el nivel de amplitud de una señal)
+// (2) función que realiza el producto de un vector y un escalar (cambiar el nivel de amplitud de una señal)
 void productoEscalar32 (uint32_t * vectorIn, uint32_t * vectorOut, uint32_t longitud, uint32_t escalar);
 
 
@@ -69,7 +69,12 @@ void eco (int16_t * vectorIn);
 void corr (int16_t * vectorX, int16_t * vectorY, int16_t * vectorCorr, uint32_t longitud);
 
 
+//###########################################################################
+void PrivilegiosSVC(void);
 
+
+// funcion extraida del main, por lo que se quito la caracteristica static
+//###########################################################################
 
 
 
