@@ -4,11 +4,12 @@
 
 ## Preguntas orientadoras 
 
-$${\color{Green}1. Describa brevemente los diferentes perfiles de familias de microprocesadores/microcontroladores de ARM. Explique alguna de sus diferencias características.}$$
-
-```html
-<span style="color:red">cardenales</span>.
 ```
+**1. Describa brevemente los diferentes perfiles de familias de microprocesadores/microcontroladores de ARM. Explique alguna de sus diferencias características.**
+
+```
+
+
 
 
 
