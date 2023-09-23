@@ -9,11 +9,6 @@
 
 
 
-
-
-
-
-
 Los perfiles se definen de la siguiente manera:
 
 `ARMv7-A`
@@ -49,9 +44,8 @@ El set de instrucciones Thumb es una forma comprimida a 16 bits del set de instr
 Por supuesto, la etapa extra requerida para manejar instrucciones de 16 bits afecta el rendimiento.
 La densidad del código Thumb es mejor que la alcanzada por la mayoría de los procesadores CISCs.
 
-
  
-3.	¿Qué entiende por arquitectura load-store? ¿Qué tipo de instrucciones no posee este tipo de arquitectura? 
+> `3.	¿Qué entiende por arquitectura load-store? ¿Qué tipo de instrucciones no posee este tipo de arquitectura?` 
 
 Como la mayoría de los procesadores RISCs, el ARM emplea una arquitectura carga-almacenamiento. Esto significa que el set de instrucciones solamente procesará (adición, substracción, etc.) valores que estén en los registros o directamente especificados dentro de la instrucción en sí misma y siempre se obtendrá el resultado de tales procesos en un registro. 
 
@@ -62,7 +56,7 @@ Las únicas operaciones que se aplican a la memoria son aquellas que copian dato
 - 2. Instrucciones de transferencia de datos. Estas copian los datos de la memoria en registros (instrucciones de carga) o copian los datos de los registros en la memoria (instrucciones de almacenamiento). Una forma adicional, útil solamente en códigos de sistemas, intercambian un dato en memoria con un dato en un registro.
 - 3. Instrucciones de control de flujo. Normalmente se ejecutan instrucciones ubicadas en direcciones de memorias consecutivas. Aunque frecuentemente el control del flujo de las instrucciones ocasiona que la ejecución conmute en una dirección diferente, ya sea en forma permanente (instrucciones de salto) o guarde una dirección de retorno para recuperar la secuencia original (instrucciones de salto y retorno) o ejecute un código de llamadas al supervisor del sistema, instrucciones tipo trapping, “atrapadas”.
 
-4.	¿Cómo es el mapa de memoria de la familia?  
+> `4.	¿Cómo es el mapa de memoria de la familia? `  
 5.	¿Qué ventajas presenta el uso de los “shadowed pointers” del PSP y el MSP? 
 6.	Describa los diferentes modos de privilegio y operación del Cortex M, sus relaciones y como se conmuta de uno al otro. Describa un ejemplo en el que se pasa del modo privilegiado a no priviligiado y nuevamente a privilegiado. 
 7.	¿Qué se entiende por modelo de registros ortogonal? Dé un ejemplo 
