@@ -56,7 +56,39 @@ Las únicas operaciones que se aplican a la memoria son aquellas que copian dato
 - 2. Instrucciones de transferencia de datos. Estas copian los datos de la memoria en registros (instrucciones de carga) o copian los datos de los registros en la memoria (instrucciones de almacenamiento). Una forma adicional, útil solamente en códigos de sistemas, intercambian un dato en memoria con un dato en un registro.
 - 3. Instrucciones de control de flujo. Normalmente se ejecutan instrucciones ubicadas en direcciones de memorias consecutivas. Aunque frecuentemente el control del flujo de las instrucciones ocasiona que la ejecución conmute en una dirección diferente, ya sea en forma permanente (instrucciones de salto) o guarde una dirección de retorno para recuperar la secuencia original (instrucciones de salto y retorno) o ejecute un código de llamadas al supervisor del sistema, instrucciones tipo trapping, “atrapadas”.
 
+En la arquitectura de carga-almacenamiento utilizada en ARM, las instrucciones se dividen en dos categorías: acceso a la memoria (carga y almacenamiento entre la memoria y los registros) y operaciones ALU (que solo ocurren entre los registros). A diferencia de una arquitectura de registro-memoria, como x86, donde uno de los operandos para una operación ADD puede estar en la memoria mientras que el otro está en un registro. Por lo tanto, las instrucciones que no se admiten en este tipo de arquitectura son aquellas que realizan operaciones directamente en posiciones de memoria.
+
+En cuanto a la arquitectura ARM en general, se basa en una arquitectura RISC y utiliza el enfoque de carga-almacenamiento. Las instrucciones se dividen en dos categorías: acceso a la memoria (carga y almacenamiento entre la memoria y los registros) y operaciones ALU (que solo ocurren entre los registros)3. Esto significa que las operaciones se realizan principalmente entre registros y no directamente en posiciones de memoria.
+
+
 #### 4.	¿Cómo es el mapa de memoria de la familia? 
+
+El mapa de memoria de la familia ARM varía dependiendo del modelo específico y la implementación de la arquitectura. Sin embargo, en términos generales, la familia ARM utiliza una estructura de memoria en la que se divide el espacio de direcciones
+en diferentes regiones.
+A modo de descripción general del mapa de memoria típico de la familia ARM, podemos considerar la siguiente subdivisión de regiones:
+
+    • Zona de código (Code Section): Esta zona se utiliza para almacenar el código ejecutable, como las instrucciones del programa y las constantes. Es una región de solo lectura (read-only) y suele estar ubicada en la parte inferior del espacio de direcciones.
+    • Zona de datos (Data Section): Esta zona se utiliza para almacenar los datos del programa, como variables globales y estáticas. Puede ser de lectura y escritura (read-write) y suele estar ubicada en la parte superior del espacio de direcciones.
+    • Pila (Stack): La pila se utiliza para almacenar las variables locales y los registros de activación de las funciones. Generalmente crece hacia abajo en la memoria y se encuentra en la parte superior del espacio de direcciones.
+    • Montón (Heap): El montón se utiliza para almacenar datos dinámicos, como objetos o estructuras de datos creados en tiempo de ejecución. Generalmente crece hacia arriba en la memoria y se encuentra en la parte inferior del espacio de direcciones.
+    • Además de estas regiones principales, también puede haber otras regiones en el mapa de memoria, como zonas reservadas para el sistema operativo, controladores de dispositivos, tablas de vectores de interrupción, entre otros.
+      
+|------------------------------------|
+|        Zona de código (ROM)        |
+|------------------------------------|
+|        Zona de código (RAM)        |
+|------------------------------------|
+|        Zona de datos (RAM)         |
+|------------------------------------|
+|               Pila                 |
+|------------------------------------|
+|               Montón               |
+|------------------------------------|
+|        Zona de dispositivos        |
+|------------------------------------|     
+|          Zona de sistema           |
+|------------------------------------|
+
 #### 5.	¿Qué ventajas presenta el uso de los “shadowed pointers” del PSP y el MSP? 
 #### 6.	Describa los diferentes modos de privilegio y operación del Cortex M, sus relaciones y como se conmuta de uno al otro. Describa un ejemplo en el que se pasa del modo privilegiado a no priviligiado y nuevamente a privilegiado. 
 #### 7.	¿Qué se entiende por modelo de registros ortogonal? Dé un ejemplo 
