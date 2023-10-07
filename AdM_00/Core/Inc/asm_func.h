@@ -52,8 +52,12 @@ void asm_invertir (uint16_t * vector, uint32_t longitud);
 		Variante: Una vez implementada la función, programar una nueva versión que utilice las
 		instrucciones SIMD para optimizar la ejecución del algoritmo.
 */
-void asm_eco (int16_t * vectorIn);
+//void asm_eco (int16_t * vectorIn);
+void asm_eco (int16_t * vectorIn, int16_t * vectorEco, int32_t longitud, int32_t eco);
 
+void asm_generaEco(int16_t *vectorIn, int16_t *vectorOut, uint32_t longitud, uint32_t msegRetardo);
+
+void asm_generaEcoSIMD(int16_t *vectorIn, int16_t *vectorOut, uint32_t longitud, uint32_t msegRetardo);
 
 
 // (11) función que calcule la correlación entre dos vectores. Luego optimice utilizando instrucciones SIMD.

@@ -180,10 +180,18 @@ int main(void)
   uint16_t escalar=2;
   //uint32_t B=8;
 
-  asm_producto_escalar16 (vIn, vOut, 5, escalar);
+  //asm_producto_escalar16 (vIn, vOut, 5, escalar);
 
 
+  //******************************************************************************
+  //	ECO ejercicio 10
+  //******************************************************************************
+  int16_t vectorIn[] = {1,4,3,8,15,-4};
+  int16_t vectorEco[] = {0,0,0,0,0,0};
+  uint32_t longitud = 6;
+  uint32_t eco = 3;
 
+  asm_eco(vectorIn, vectorEco, longitud, eco);
 
 
   //###############################################################################
