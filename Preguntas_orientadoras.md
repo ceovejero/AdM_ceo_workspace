@@ -116,6 +116,13 @@ A continuación, se describe un ejemplo de cómo se pasa del modo privilegiado a
 * A partir de ese momento, el procesador se encuentra nuevamente en el modo privilegiado (Modo Handler o Modo Thread).
 No se puede regresar directamente del modo no privilegiado al modo privilegiado. Si se desea hacerlo, se debe disparar una interrupción o excepción que saque al sistema del modo no privilegiado y lo lleve al modo Handler (privilegiado); sólo estando en un modo privilegiado se puede cambiar el bit de control de PSR para habilitar el modo privilegiado. 
 
+![](./img/image-6a.png)
+
+___________________________________________________________________________________________________________________________
+
+![](./img/image-6b.png)
+
+
 #### 7.	¿Qué se entiende por modelo de registros ortogonal? Dé un ejemplo 
 
 Se dice que la arquitectura ARM cuenta con un modelo de registros ortogonal porque la configuración de cada registro no interfiere en la del otro. El contenido de cada registro no afecta al contenido del otro. Por ejemplo, cuando se utiliza un sistema operativo embebido, el registro CONTROL podría re programarse en cada cambio de contexto para permitir que algunas tareas de la aplicación se ejecuten con un nivel de acceso privilegiado y otras se ejecuten con un nivel de acceso sin privilegios.
@@ -152,7 +159,7 @@ En este ejemplo, se compara el valor de R0 con 0 y, dependiendo del resultado de
 
 #### 10.	Describa las funciones principales de la pila. ¿Cómo resuelve la arquitectura el llamado a funciones y su retorno? 
 
-	La pila puede:
+La pila puede:
         
 -	Guardar variables locales
 -	Pasar datos a funciones o subrutinas
