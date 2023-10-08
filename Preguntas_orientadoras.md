@@ -124,7 +124,9 @@ En la mayoría de las aplicaciones simples sin un sistema operativo embebido, no
 
 #### 8.	¿Qué ventajas presenta el uso de intrucciones de ejecución condicional (IT)? Dé un ejemplo 
 
-Las instrucciones de ejecución condicional (IT, por sus siglas en inglés) son una característica de la arquitectura ARM que permite ejecutar instrucciones condicionalmente en función del estado de las banderas o flags del procesador. Estas instrucciones ofrecen varias ventajas, entre las que se incluyen:
+Las instrucciones de ejecución condicional (IT, por sus siglas en inglés) son una característica de la arquitectura ARM que permite ejecutar instrucciones condicionalmente en función del estado de las banderas o flags del procesador. 
+Principalmente permite realizar el control de flujo del programa sin romper el pipeline.
+Estas instrucciones ofrecen varias ventajas, entre las que se incluyen:
 * Reducción del tamaño del código: Las instrucciones condicionales permiten ejecutar diferentes instrucciones en función de una condición, lo que puede eliminar la necesidad de escribir múltiples bloques de código separados. Esto reduce el tamaño del código y facilita su mantenimiento.
 * Mejora del rendimiento: Al ejecutar instrucciones condicionalmente, se pueden evitar saltos o desvíos innecesarios, lo que puede mejorar el rendimiento del programa al reducir la cantidad de ciclos de reloj necesarios para ejecutarlo.
 * Mayor flexibilidad: Las instrucciones condicionales permiten adaptar el flujo de ejecución del programa según diferentes condiciones, lo que brinda una mayor flexibilidad en el diseño del software. Esto puede ser especialmente útil en casos donde se necesitan tomar decisiones basadas en múltiples condiciones.
@@ -142,9 +144,23 @@ En este ejemplo, se compara el valor de R0 con 0 y, dependiendo del resultado de
 
 #### 9.	Describa brevemente las excepciones más prioritarias (reset, NMI, Hardfault).  
 
+-    Reset: se ejecuta al iniciar el microcrontrolador (al momento de ser energizado).
+-    NMI: es la interrupcion no enmascarable, normalmente se le asocian funciones para controlar el sistema: el Watch Dog Timer 
+-    o el brownout detector.
+-    Hardfault: esta excepcion ocurre ante toda clase de falla interna del procesador como uso indebido de memoria
+-    dinamica, inicializacion incorrecta de perfericos, etc.  
 
 #### 10.	Describa las funciones principales de la pila. ¿Cómo resuelve la arquitectura el llamado a funciones y su retorno? 
-
+    La pila puede:
+        
+        - Guardar variables locales
+        - Pasar datos a funciones o subrutinas
+        - Guardar el estado del procesador y de los registros de proposito general cuando ocurre un cambio de contexto, 
+          esto se conoce com "stacking"
+    
+    Cuando hay un llamado a funcion el controlador guarda en la pila los registros del procesador y la direccion de retorno.
+    Luego ejecuta la funcion y a su retorno recupera de la pila la direccion donde debe retornar y los registros del procesador
+    asegurando que las condiciones sigan siendo las mismas anted de la llamada a la funcion. 
 
 #### 11.	Describa la secuencia de reset del microprocesador.  
 
