@@ -151,16 +151,14 @@ En este ejemplo, se compara el valor de R0 con 0 y, dependiendo del resultado de
 -    dinamica, inicializacion incorrecta de perfericos, etc.  
 
 #### 10.	Describa las funciones principales de la pila. ¿Cómo resuelve la arquitectura el llamado a funciones y su retorno? 
-    La pila puede:
+
+	La pila puede:
         
-        - Guardar variables locales
-        - Pasar datos a funciones o subrutinas
-        - Guardar el estado del procesador y de los registros de proposito general cuando ocurre un cambio de contexto, 
-          esto se conoce com "stacking"
+-	Guardar variables locales
+-	Pasar datos a funciones o subrutinas
+-	Guardar el estado del procesador y de los registros de proposito general cuando ocurre un cambio de contexto, esto se conoce com "stacking"
     
-    Cuando hay un llamado a funcion el controlador guarda en la pila los registros del procesador y la direccion de retorno.
-    Luego ejecuta la funcion y a su retorno recupera de la pila la direccion donde debe retornar y los registros del procesador
-    asegurando que las condiciones sigan siendo las mismas anted de la llamada a la funcion. 
+Cuando hay un llamado a funcion el controlador guarda en la pila los registros del procesador y la direccion de retorno. Luego ejecuta la funcion y a su retorno recupera de la pila la direccion donde debe retornar y los registros del procesador asegurando que las condiciones sigan siendo las mismas anted de la llamada a la funcion. 
 
 #### 11.	Describa la secuencia de reset del microprocesador.  
 
