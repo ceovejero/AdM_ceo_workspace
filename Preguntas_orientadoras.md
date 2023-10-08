@@ -208,18 +208,40 @@ Late arrival: este mecanismo actua cuando al momento de estar realizando el stac
 
 #### 18.	¿Qué es el systick? ¿Por qué puede afirmarse que su implementación favorece la portabilidad de los sistemas operativos embebidos? 
 
-
+El systick es un temporizador integrado dentro del nucleo ARM y tiene una longitud de 24 bits. Ya por el hecho de estar integrado en el nucleo del microprocesador cualquier fabricante que implemente su microcontrolador con un nucleo ARM permitirá su uso favoreciendo la portabilidad de los sistemas operativos o programas que lo utilicen.
 
 #### 19.	¿Qué funciones cumple la unidad de protección de memoria (MPU)?  
 
-
+La MPU tiene como funcion principal proteger el acceso a memoria. De esta manera podemos:
+- Prevenir que las aplicaciones (tareas) accedan a zonas de memoria de otras aplicaciones o del kernel de un SO.
+- Prevenir que las aplicaciones accedan a periféricos sin los permisos adecuados.
+- Evitar que se ejecute código desde zonas no permitidas (ejemplo desde la RAM).
 #### 20.	¿Cuántas regiones pueden configurarse como máximo? ¿Qué ocurre en caso de haber solapamientos de las regiones? ¿Qué ocurre con las zonas de memoria no cubiertas por las regiones definidas? 
 
-
+Se pueden configurar hasta 8 regiones de memoria.
+El solapamiento de regiones esta permitido. Las direcciones de memoria solapadas mantendrán sus atributos de acceso y permisos iguales a los de la region de numero mas alto. Si la MPU esta habilitada, la zona de memoria que no este cubierta por alguna zona definida quedará inutilizada. Es decir al querer acceder a una direccion de memoria no definida en la MPU se disparará una excepción por falla.  
 #### 21.	¿Para qué se suele utilizar la excepción PendSV? ¿Cómo se relaciona su uso con el resto de las excepciones? Dé un ejemplo 
 
+La excepcion PendSV se utiliza para realizar el cambio de contexto en un sistema operativo (cambio de tareas).
+Veamos un ejemplo:  
+1. La tarea A llama a SVC para realizar un cambio de tarea.
+2. El sistema operativo recibe la solicitud, se prepara para el cambio de contexto y espera la Excepción PendSV.
+3. Cuando la CPU sale de SVC, ingresa inmediatamente a PendSV y realiza el cambio de contexto.
+4. Cuando PendSV finaliza y regresa al modo thread y ejecuta la tarea B.
+5. Se produce una interrupción.
+6. Mientras se ejecuta la rutina de interrupciones, se produce una excepción SYSTICK.
+7. El sistema operativo lleva a cabo su operación, luego espera la excepción PendSV y se prepara para el cambio de contexto.
+8. Cuando sale de la excepción SYSTICK, regresa a la rutina de interrupción.
+9. Cuando se completa la rutina de interrupción, el PendSV se inicia y realiza las operaciones de cambio de contexto.
+10. Cuando se completa PendSV, el programa vuelve al modo thread para retomar la ejecucion de la tarea A.
+
+![](./img/image-21.png)	
 
 #### 22.	¿Para qué se suele utilizar la excepción SVC? Expliquelo dentro de un marco de un sistema operativo embebido.
+
+La excepción SVC es una excepción por software que se llama a traves de la instrucción SVC. Los sistemas operativos la utilizan para el llamado a funciones propias del S.O. o para acceder al uso de recursos de un sistema desde una aplicacion (Device Driver).
+
+![](./img/image-22.png)	
 
 ## ISA
 
