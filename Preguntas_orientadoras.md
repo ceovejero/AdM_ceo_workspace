@@ -169,9 +169,13 @@ Cuando hay un llamado a funcion el controlador guarda en la pila los registros d
 
 #### 11.	Describa la secuencia de reset del microprocesador.  
 
+El microcrocontrolador primero de todo inicializa el puntero a la pila, es deir, carla la posicion de memoria de la pila en el registro r13. Seguido realiza un salto a la direccion de memoria contenida en el vector de reset, esta direccion de memoria es el inicio del codigo de programa. 
 
 #### 12.	¿Qué entiende por “core peripherals”? ¿Qué diferencia existe entre estos y el resto de los periféricos? 
 
+Core peripheral se refiere a los perifericos que posee el microprocesador ARM en su nucleo (por ej. NIVIC, SysTick Timer, MPU, FPU, DSP). 
+
+El resto de los perifericos son todos aquellos que estan por fuera del nucleo de ARM y que agrega el fabricante del microcontrolador como por ej. UART, I2C, SPI, DMA etc. 
 
 #### 13.	¿Cómo se implementan las prioridades de las interrupciones? Dé un ejemplo 
 
