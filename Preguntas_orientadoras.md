@@ -140,7 +140,7 @@ Estas instrucciones ofrecen varias ventajas, entre las que se incluyen:
 * Optimización del código: Al utilizar instrucciones condicionales, el compilador puede realizar diferentes optimizaciones, como la eliminación de código muerto o la reorganización de instrucciones para aprovechar al máximo el pipeline del procesador.
 Un ejemplo de uso de instrucciones de ejecución condicional en ARM sería:
 
-```
+```asm
 	CMP R0, #0    ; Compara el valor de R0 con 0
 	ITE GT        ; Ejecuta las siguientes dos instrucciones si R0 es mayor que 0
 	MOVGT R1, #1  ; Si R0 > 0, mueve el valor 1 a R1
