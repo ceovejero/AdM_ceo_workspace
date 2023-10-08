@@ -194,11 +194,20 @@ CMSIS es un conjunto de librerias que implementan una capa de abstraccion de har
 
 #### 16.	¿Cómo cambia la operación de stacking al utilizar la unidad de punto flotante?
 
+Cuando se utiliza la FPU el controlador debe guardar en el stack mas registros. A R0-R3, R12, LR, xPSR se suman los registros S0-S15, FPSCR.
 
 #### 17.	Explique las características avanzadas de atención a interrupciones: tail chaining y late arrival. 
 
+Tail chaining: este mecanismo actua cuando al estar ejecutandose una rutina de interrupcion aparece otra interrupcion de igual o menor prioridad. El controlador terminará de ejecutar la rutina de la primera interrpcion y luego ejecutará la rutina de la segunda interrupcion. No se hace un cambio de contexto porque no es necesario.
+
+![](./img/image-17a.png)
+
+Late arrival: este mecanismo actua cuando al momento de estar realizando el stacking de una interrupcion aparece otra interrupcion de mayor prioridad. El controlador terminará de realizar el stacking, luego atenderá la rutina de la interrupcion de mayor priridad y luego a traves del mecanismo tail chaining terminará atendiendo la rutina de la primer interrupcion (de menor prioridad).
+
+![](./img/image-17b.png)	
 
 #### 18.	¿Qué es el systick? ¿Por qué puede afirmarse que su implementación favorece la portabilidad de los sistemas operativos embebidos? 
+
 
 
 #### 19.	¿Qué funciones cumple la unidad de protección de memoria (MPU)?  
