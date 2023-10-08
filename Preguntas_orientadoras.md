@@ -247,20 +247,69 @@ La excepción SVC es una excepción por software que se llama a traves de la ins
 
 #### 1.	¿Qué son los sufijos y para qué se los utiliza? Dé un ejemplo 
 
+Los sufijos son codigos que se colocan a continuación de una instrucción en assembly y se los utiliza para:
+    
+1. Actualizar el registro de estados (APSR) cuando se ejecuta una instrucción (sufijo S).
+2. Para ejecutar una instrucción de forma condicional (sufijo EQ, NE, CS, CC, MI, PL, VS, VC, HI, LS, GE, LT, GT, LE).
+3. Seleccionar el uso de instrucciones de 16 bit o 32 bits (sufijo .N , .W).
+
+    Por ejemplo, para el caso 1:
+
+```asm
+        MOV  R0, R1 // mueve R1 a R0 y no actualiza APSR
+        MOVS R0, R1 // mueve R1 a R0 y actualiza APSR
+```
+    Para el caso 2:
+
+```asm
+        ADDEQ R0, R1, R2  // ejecuta R0=R1+R2 solo si el resultado de la operacion previa seteó el flag "Equal" en 1
+```
 
 #### 2.	¿Para qué se utiliza el sufijo ‘s’? Dé un ejemplo 
 
+Se utiliza para actualizar el registro de estados (APSR) cuando se ejecuta una instrucción.
+
+```asm
+        MOV  R0, #0x0A10 // mueve valor a R0 y no actualiza APSR
+        MOVS R0, #0x0A10 // mueve valor a R0 y actualiza APSR
+```
 
 #### 3.	¿Qué utilidad tiene la implementación de instrucciones de aritmética saturada? Dé un ejemplo con operaciones con datos de 8 bits. 
+
+Las instrucciones de aritmética saturada evitan que se produzca un overflow manteniendo un valor entre su máximo y su minimo.
+    Por ejemplo:
+
+```asm
+        SSAT R1, #8, R0  // Toma el registro R0 y lo mueve al registro R1 con R0 > 127 ==> R1=127 / R0 < -128 ==> R1=-128
+```
 
 
 #### 4.	Describa brevemente la interfaz entre assembler y C ¿Cómo se reciben los argumentos de las funciones? ¿Cómo se devuelve el resultado? ¿Qué registros deben guardarse en la pila antes de ser modificados? 
 
+El compilador admite archivos fuentes con extension .S. Estos archivos contienen funciones en codigo assembly. Las funciones en assembly tienen el siguiente prototipo:
+
+```c
+        void func_assembly( type_A param_A, type_B param_B, type_C param_C, type_D param_D )
+```
+
+La funcion es llamada desde C y puede utilizar hasta 4 parametros que son transferidos a los registros r0, r1, r2 y r3 respectivamente. El registro r0 se utiliza como argumento de retorno.
+Los registros r0 a r3 son guardados automáticamente en la pila cuando se produce el llamado a la función en assembly, luego si la funcion requiere el uso de r4 a r12 será necesario hacer el PUSH y POP de los registros usados de forma explícita en la función.   
 
 #### 5.	¿Qué es una instrucción SIMD? ¿En qué se aplican y que ventajas reporta su uso? Dé un ejemplo.
 
+Las instrucciones SIMD tienen la particularidad de realizar operaciones con multiples datos en un solo ciclo de instrucción.
+SIMD significa Single Instruction Multiple Data. Las instrucciones estan orientadas al manejo de técnicas de procesamiento de señales digitales (DSP, Digital Signal Processing).
 
+    Por ejemplo:
 
+```asm
+        SHADD16 R0, R1, R2      // Suma la parte alta R1 con la parte alta de R2, divide la suma por 2 y guarda el resultado 
+                                // en parte la parte alta de R0.
+                                // Lo mismo hace con las partes baja de los tres registros.
+```
 
+En la figura 8 se muestra una representación gráfiva de la instrucción SHADD16.  
+
+![](./img/image-ISA_5.png)	
 
 
