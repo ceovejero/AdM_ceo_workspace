@@ -182,8 +182,14 @@ Los cortex-M3/M4 soportan tres niveles de prioridad fijos (los mas altos) y hast
 
 #### 14.	¿Qué es el CMSIS? ¿Qué función cumple? ¿Quién lo provee? ¿Qué ventajas aporta? 
 
+CMSIS es un conjunto de librerias que implementan una capa de abstraccion de hardware para los Cortex M. Estas librerias estan escritas en C, las provee ARM y brindan funciones para interectuar con los perfericos del nucleo (Core peripherals) asi como para interactuar con un RTOS (Real Time Operating System) 
 
 #### 15.	Cuando ocurre una interrupción, asumiendo que está habilitada ¿Cómo opera el microprocesador para atender a la subrutina correspondiente? Explique con un ejemplo 
+
+1. Se envía una solicitud de interrupción al procesador.
+2. El procesador suspende la tarea que se está ejecutando actualmente.
+3. El procesador ejecuta la Rutina de Servicio de Interrupción (ISR) y, opcionalmente, borrar la solicitud de interrupción mediante software si es necesario.
+4. El procesador reanuda la tarea previamente suspendida.
 
 
 #### 16.	¿Cómo cambia la operación de stacking al utilizar la unidad de punto flotante?
