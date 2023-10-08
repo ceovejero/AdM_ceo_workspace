@@ -141,10 +141,10 @@ Estas instrucciones ofrecen varias ventajas, entre las que se incluyen:
 Un ejemplo de uso de instrucciones de ejecución condicional en ARM sería:
 
 ```asm
-	CMP R0, #0    ; Compara el valor de R0 con 0
-	ITE GT        ; Ejecuta las siguientes dos instrucciones si R0 es mayor que 0
-	MOVGT R1, #1  ; Si R0 > 0, mueve el valor 1 a R1
-	MOVLE R1, #0  ; Si R0 <= 0, mueve el valor 0 a R1
+	CMP R0, #0    // Compara el valor de R0 con 0
+	ITE GT        // Ejecuta las siguientes dos instrucciones si R0 es mayor que 0
+	MOVGT R1, #1  // Si R0 > 0, mueve el valor 1 a R1
+	MOVLE R1, #0  // Si R0 <= 0, mueve el valor 0 a R1
 ```
 
 En este ejemplo, se compara el valor de R0 con 0 y, dependiendo del resultado de la comparación, se ejecutan diferentes instrucciones. Si R0 es mayor que 0, se mueve el valor 1 a R1. Si R0 es menor o igual a 0, se mueve el valor 0 a R1. Esto permite tomar diferentes acciones en función de una condición específica.
