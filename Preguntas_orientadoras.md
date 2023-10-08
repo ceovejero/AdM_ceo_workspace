@@ -174,11 +174,11 @@ El microcrocontrolador primero de todo inicializa el puntero a la pila, es deir,
 #### 12.	¿Qué entiende por “core peripherals”? ¿Qué diferencia existe entre estos y el resto de los periféricos? 
 
 Core peripheral se refiere a los perifericos que posee el microprocesador ARM en su nucleo (por ej. NIVIC, SysTick Timer, MPU, FPU, DSP). 
-
 El resto de los perifericos son todos aquellos que estan por fuera del nucleo de ARM y que agrega el fabricante del microcontrolador como por ej. UART, I2C, SPI, DMA etc. 
 
 #### 13.	¿Cómo se implementan las prioridades de las interrupciones? Dé un ejemplo 
 
+Los cortex-M3/M4 soportan tres niveles de prioridad fijos (los mas altos) y hasta 256 niveles de prioridad programables. Normalmente en la mayoria de los sistemas se necesitan algunos pocos niveles de prioridad. La cantidad de niveles se puede ajustar en 4, 8, 16, 32 ..... hasta el maximo. Para esto se configura un registro de nivel de prioridad. Tambien se pueden configurar sub-prioridades. La sub-prioridad es usada cuando 2 interrupciones del mismo nivel de prioridad ocurren al mismo tiempo, en este caso se ejecutará primero la que tenga mayor sub-prioridad.  
 
 #### 14.	¿Qué es el CMSIS? ¿Qué función cumple? ¿Quién lo provee? ¿Qué ventajas aporta? 
 
